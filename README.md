@@ -46,10 +46,10 @@
 
 |      |   미션   |                          Repository                           |
 |:----:|:------:|:-------------------------------------------------------------:|
-| `미션 1` | 레이싱카 |      [(미션)](https://github.com/woowacourse-precourse/java-racingcar-7)      |
-| `미션 2` | 로또 |      [(미션)](https://github.com/woowacourse-precourse/java-lotto-7)      |
-| `미션 3` |    편의점    |      [(미션)](https://github.com/woowacourse-precourse/java-convenience-store-7)      |
-| `미션 4` |  개인 게시판  | 추가 예정 |
+| `1주차(01.13 ~ 19)` | 레이싱카 |      [(미션)](https://github.com/woowacourse-precourse/java-racingcar-7)      |
+| `2주차(01.20 ~ 26)` | 로또 |      [(미션)](https://github.com/woowacourse-precourse/java-lotto-7)      |
+| `3주차(27 ~ 02.02)` |    편의점    |      [(미션)](https://github.com/woowacourse-precourse/java-convenience-store-7)      |
+| `4주차(02.03 ~ 09)` |  개인 게시판  | 추가 예정 |
 
 
 <br>
