@@ -31,6 +31,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 테스트테스트(){
+        int expect = 6;
+
+        int result = 2 * 3;
+
+        assertThat(result).isEqualTo(expect);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
