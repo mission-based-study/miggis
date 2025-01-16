@@ -1,14 +1,41 @@
 package racingcar.model;
 
 public class Car {
+    private static final int MAXIMUM_NAME_LENGTH = 5;
+    private static final int INITIAL_POSITION = 0;
+    private static final int MOVING_CONDITION = 4;
+    private static final int MOVE_FORWARD = 1;
 
-    private String carName;
-    private int currentPosition;
+    private String name;
+    private int position;
 
-    private Car(String carName, int currentPosition){
-        // validateCarName 넣어주기
-        this.carName = carName;
-        this.currentPosition = currentPosition;
+    public Car(String name) {
+        this.name = name;
+        this.position = INITIAL_POSITION;
+
+        if (name.length() > MAXIMUM_NAME_LENGTH){
+            throw new IllegalArgumentException("차량 이름의 길이는 최대 " + MAXIMUM_NAME_LENGTH + "자 입니다.");
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+
+    protected void move(int randomValue){
+        if (randomValue >= MOVING_CONDITION) {
+            this.position += MOVE_FORWARD;
+        }
+    }
+
+    // TODO: 자동차 경주 객체 RacingCar 에서 난수 생성해주기
+    private int generateRandomValue(){
+        return (int) Math.floor(Math.random() * 10);
     }
 
 }

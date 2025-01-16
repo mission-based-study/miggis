@@ -1,4 +1,5 @@
 package racingcar.model;
 
-public class CarMoving {
+public class RacingCar {
+
 }
