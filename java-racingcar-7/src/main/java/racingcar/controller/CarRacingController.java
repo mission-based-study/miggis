@@ -1,16 +1,38 @@
 package racingcar.controller;
 
+import racingcar.model.Car;
+import racingcar.model.RacingCar;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.LinkedHashSet;
+import java.util.List;
+
 public class CarRacingController {
-    // TODO: inputView 호출하며 시작하기
-    InputView inputView() {
-        return null;
+    LinkedHashSet<Car> carLinkedHashSet = new LinkedHashSet<>();
+    int gameCount;
+    List<Car> winner;
+    OutputView outputView;
+
+    public CarRacingController(InputView inputView, OutputView outputView) {
+        this.outputView = outputView;
+        initialize(inputView);
+
+        RacingCar racingCar = new RacingCar(carLinkedHashSet);
+
+        for (int i = 0; i < gameCount; i++) {
+            racingCar.race();
+            outputView.printRaceRound(racingCar.getCars());
+        }
+
+        winner = racingCar.getWinners();
+        outputView.printWinners(winner);
+
     }
 
-    // TODO: outputView 호출하고 종료하기
-    OutputView outputView(){
-        return null;
+    private void initialize(InputView inputView) {
+        this.carLinkedHashSet = inputView.getCarLinkedHashSet();
+        this.gameCount = inputView.getGameCount();
     }
+
 }
