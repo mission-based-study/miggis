@@ -33,9 +33,5 @@ public class Car {
         }
     }
 
-    // TODO: 자동차 경주 객체 RacingCar 에서 난수 생성해주기
-    private int generateRandomValue(){
-        return (int) Math.floor(Math.random() * 10);
-    }
 
 }
