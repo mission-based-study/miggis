@@ -2,6 +2,11 @@ package lotto;
 
 import java.util.List;
 
+//      제공된 Lotto 클래스를 사용하여 구현해야 한다.
+//        • Lotto에 numbers 이 외의 필드(인스턴스 변수)를 추가할 수 없다.
+//        • numbers의 접근 제어자 인 private은 변경할 수 없다.
+//        • Lotto의 패키지를 변경할 수 있다.
+// 일급컬렉션.
 public class Lotto {
     private final List<Integer> numbers;
 
