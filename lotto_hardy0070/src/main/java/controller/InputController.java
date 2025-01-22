@@ -23,8 +23,9 @@ public class InputController {
     // 사용자 입력 받을 때 파라미터 2개를 잘 구분해야 한다.
     public WinLotto decideWinLottoNumbers(String numbers, int bonusNumber) {
         List<Integer> winLottoNumbers = winLottoService.getWinLotto(numbers);
+        Lotto winLotto = new Lotto(winLottoNumbers);
 
-        return new WinLotto(winLottoNumbers, bonusNumber);
+        return new WinLotto(winLotto, bonusNumber);
     }
 
 }
