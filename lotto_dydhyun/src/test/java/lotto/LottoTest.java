@@ -28,8 +28,11 @@ class LottoTest {
     }
 
     @Test
-    void 로또_번호는_0부터_45까지_범위를_갖는다() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 8)))
+    void 로또_번호는_1부터_45까지_범위를_갖는다() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> new Lotto(List.of(0, 1, 2, 3, 4, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
