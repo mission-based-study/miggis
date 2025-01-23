@@ -16,6 +16,7 @@ public class Lotto {
         List<Integer> sortedNumbers = sortNumbers(numbers);
         isDuplicate(sortedNumbers);
         isInRange(sortedNumbers);
+
         this.numbers = sortedNumbers;
     }
 
@@ -32,6 +33,7 @@ public class Lotto {
 
     private void isDuplicate(List<Integer> numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+
         if (uniqueNumbers.size() != numbers.size()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되면 안됩니다.");
         }
