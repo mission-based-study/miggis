@@ -1,16 +1,18 @@
 package service;
 
+import Model.Lotto;
+import Model.WinLotto;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WinLottoService {
 
-    public List<Integer> getWinLotto(String numbers) {
+    public WinLotto getWinLotto(String numbers, int bonusNumber) {
         String[] splitNumbers = numbers.split(",");
 
-        List<Integer> winLottoNumbers = mapToLottoNumber(splitNumbers);
+        Lotto lotto = new Lotto(mapToLottoNumber(splitNumbers));
 
-        return winLottoNumbers;
+        return new WinLotto(lotto, bonusNumber);
     }
 
     private List<Integer> mapToLottoNumber(String[] splitNumbers) {
