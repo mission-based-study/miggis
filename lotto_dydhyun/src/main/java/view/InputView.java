@@ -24,10 +24,6 @@ public class InputView {
         System.out.println(gameCount + "개를 구매했습니다.");
     }
 
-    public int getGameCount() {
-        return gameCount;
-    }
-
     private void purchaseTest(String userInput){
         int purchaseAmount = validateInputType(userInput);
 

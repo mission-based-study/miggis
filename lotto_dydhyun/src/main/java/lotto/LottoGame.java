@@ -7,11 +7,14 @@ import java.util.List;
 
 public class LottoGame {
 
-    public LottoGame() {
+    public List<Lotto> randomLottoList;
+
+    public LottoGame(int gameCount) {
+        this.randomLottoList = generateLotto(gameCount);
 
     }
 
-    List<Lotto> generateLotto(int gameCount) {
+    private List<Lotto> generateLotto(int gameCount) {
         List<Lotto> generatedLotto = new ArrayList<>();
 
         for (int i = 0; i < gameCount; i++){
