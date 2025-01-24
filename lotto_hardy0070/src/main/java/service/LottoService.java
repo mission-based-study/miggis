@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import lotto.Lotto;
+import Model.Lotto;
 
 // 클래스 명세
-// 로또 생성을 책임진다.[핵심]
+// 로또 상태에 랜덤값을 부여하는 로직
 public class LottoService {
 
     public List<Lotto> getLottos(int lottoQuantity) {
@@ -26,5 +26,7 @@ public class LottoService {
 
         return new Lotto(lottoNumbers);
     }
+
+
 
 }

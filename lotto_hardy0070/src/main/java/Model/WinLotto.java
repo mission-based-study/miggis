@@ -1,5 +1,6 @@
-package lotto;
+package Model;
 
+// 당첨 로또를 찾는 역할과 책임
 public class WinLotto {
 
     private Lotto lotto;
@@ -9,6 +10,14 @@ public class WinLotto {
         this.lotto = lotto;
         validate(bonusNumber);
         this.bonusNumber = bonusNumber;
+    }
+
+    public Matched compareWinLottoAnd(Lotto userLotto) {
+        int numberOfMatched = userLotto.countMatchedNumber(lotto);
+
+        boolean bonusMatched = userLotto.containsThis(bonusNumber);
+
+        return Matched.matchingPrizeBy(numberOfMatched, bonusMatched);
     }
 
     // 추가적인 예외처리 필요함.
@@ -21,4 +30,5 @@ public class WinLotto {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자만 가능합니다.");
         }
     }
+
 }
