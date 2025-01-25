@@ -3,6 +3,9 @@ package Controller;
 import lotto.Lotto;
 import lotto.LottoGame;
 import view.InputView;
+import view.OutputView;
+
+import java.util.Arrays;
 
 public class LottoController {
 
@@ -11,14 +14,30 @@ public class LottoController {
         int gameCount = inputView.gameCount;
         LottoGame lottoGame = new LottoGame(gameCount);
 
-        // TODO: OutputView 로 분리해주기
-        for (Lotto lotto : lottoGame.randomLottoList) {
-            System.out.println(lotto);
-        }
+        OutputView outputView = new OutputView(lottoGame.randomLottoList);
 
-        inputView.enterWinningNumber();
-        inputView.enterBonusNumber();
+        Lotto winningNumber = inputView.enterWinningNumber();
+        int bonusNumber = noDuplicationInputBonusNumber(winningNumber, inputView, lottoGame);
+
 
     }
+
+    private int noDuplicationInputBonusNumber(Lotto winningNumber, InputView inputView, LottoGame lottoGame) {
+        while (true) {
+            int bonusNumber = inputView.enterBonusNumber();
+
+            if (!lottoGame.checkBonusNumberInRange(bonusNumber)) {
+                System.out.println("[ERROR] 보너스 번호는 로또 범위에 있어야 합니다. 다시 입력하세요.");
+                continue;
+            }
+
+            if (!lottoGame.isDuplicateBonusNumberCompareToWinningNumber(winningNumber, bonusNumber)) {
+                return bonusNumber;
+            }
+            System.out.println("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다. 다시 입력하세요.");
+        }
+    }
+
+
 
 }

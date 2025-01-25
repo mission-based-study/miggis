@@ -44,18 +44,21 @@ public class Lotto {
         checkMaximumValue(numbers.getLast());
     }
 
-    private void checkMinimumValue(int number) {
+    public void checkMinimumValue(int number) {
         if (number < LOTTO_NUMBER_MIN) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 " + LOTTO_NUMBER_MIN + "부터 " + LOTTO_NUMBER_MAX + "의 값을 가집니다.");
         }
     }
 
-    private void checkMaximumValue(int number) {
+    public void checkMaximumValue(int number) {
         if (number > LOTTO_NUMBER_MAX) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 " + LOTTO_NUMBER_MIN + "부터 " + LOTTO_NUMBER_MAX + "의 값을 가집니다.");
         }
     }
 
+    boolean isDuplicateNumber(int bonusNumber){
+        return numbers.contains(bonusNumber);
+    }
 
     @Override
     public String toString() {
