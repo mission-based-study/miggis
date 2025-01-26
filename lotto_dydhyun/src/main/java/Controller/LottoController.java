@@ -11,13 +11,17 @@ public class LottoController {
 
     public void runLottoGame(){
         InputView inputView = new InputView();
+
         int gameCount = inputView.gameCount;
+
         LottoGame lottoGame = new LottoGame(gameCount);
 
         OutputView outputView = new OutputView(lottoGame.randomLottoList);
 
         Lotto winningNumber = inputView.enterWinningNumber();
         int bonusNumber = noDuplicationInputBonusNumber(winningNumber, inputView, lottoGame);
+
+
 
 
     }

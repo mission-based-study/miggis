@@ -1,4 +1,4 @@
 package lotto;
 
-public class Statistics {
+public class Counting {
 }
