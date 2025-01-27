@@ -1,5 +1,6 @@
 package Controller;
 
+import lotto.Counting;
 import lotto.Lotto;
 import lotto.LottoGame;
 import view.InputView;
@@ -20,7 +21,10 @@ public class LottoController {
 
         Lotto winningNumber = inputView.enterWinningNumber();
         int bonusNumber = noDuplicationInputBonusNumber(winningNumber, inputView, lottoGame);
+        //TODO ->
+        Counting counting = new Counting(lottoGame.randomLottoList, winningNumber, bonusNumber);
 
+        outputView.showTotalCount();
 
 
 

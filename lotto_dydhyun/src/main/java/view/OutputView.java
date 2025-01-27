@@ -16,5 +16,8 @@ public class OutputView {
         }
     }
 
+    public void showTotalCount() {
+
+    }
 
 }
