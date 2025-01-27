@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
@@ -65,10 +66,10 @@ public class InputView {
     }
 
     private void validateInputScale(int userInput) {
-        if (userInput % 1000 != 0)
+        if (userInput % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 입력단위는 " + PURCHASE_SCALE + "원 입니다.");
+        }
     }
-
 
     public Lotto enterWinningNumber(){
         System.out.println("당첨 번호를 입력해 주세요.");
@@ -83,18 +84,24 @@ public class InputView {
 
         String[] splitInput = rawInput.split(",");
 
-        for (String num : splitInput) {
-            winningNumber.add(Integer.parseInt(num.trim()));
+
+        for (String userInputNumber : splitInput) {
+            validateInputType(userInputNumber);
+
+            winningNumber.add(Integer.parseInt(userInputNumber.trim()));
         }
 
         return winningNumber;
     }
 
-
     public int enterBonusNumber(){
         System.out.println("보너스 번호를 입력해 주세요.");
 
-        return Integer.parseInt(Console.readLine());
+        String bonusNumber = Console.readLine();
+
+        validateInputType(bonusNumber);
+
+        return Integer.parseInt(bonusNumber);
     }
 
 
