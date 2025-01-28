@@ -60,6 +60,26 @@ public class Lotto {
         return numbers.contains(bonusNumber);
     }
 
+    public int countMatchingNumbers(Lotto winningNumber){
+        int count = 0;
+
+        for (int i = 0; i < LOTTO_SIZE; i++){
+            if(numbers.contains(winningNumber.numbers.get(i))){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int matchingBonusNumber(int bonusNumber) {
+        int matchingBonus = 0;
+
+        if (numbers.contains(bonusNumber)){
+            matchingBonus++;
+        }
+        return matchingBonus;
+    }
+
     @Override
     public String toString() {
         return numbers.toString();
