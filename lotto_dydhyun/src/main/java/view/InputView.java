@@ -9,7 +9,7 @@ import java.util.List;
 
 public class InputView {
     private static final String ENTER_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
-    private static final int PURCHASE_SCALE = 1000;
+    public static final int PURCHASE_SCALE = 1000;
 
     public int gameCount = 0;
 
@@ -91,7 +91,7 @@ public class InputView {
             winningNumber.add(Integer.parseInt(userInputNumber.trim()));
         }
 
-        return winningNumber;
+        return winningNumber.stream().sorted().toList();
     }
 
     public int enterBonusNumber(){
