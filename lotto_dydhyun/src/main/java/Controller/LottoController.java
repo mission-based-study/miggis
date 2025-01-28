@@ -14,6 +14,7 @@ public class LottoController {
         InputView inputView = new InputView();
 
         int gameCount = inputView.gameCount;
+        int purchaseAmount = gameCount * InputView.PURCHASE_SCALE;
 
         LottoGame lottoGame = new LottoGame(gameCount);
 
@@ -24,9 +25,9 @@ public class LottoController {
         //TODO ->
         Counting counting = new Counting(lottoGame.randomLottoList, winningNumber, bonusNumber);
 
-        outputView.showTotalCount();
+        int income = outputView.showTotalCount(counting.outputList);
 
-
+        outputView.showIncomeRate(purchaseAmount, income);
 
     }
 
