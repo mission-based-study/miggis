@@ -45,12 +45,15 @@ public class OutputView {
         }
     }
 
-    public void showIncomeRate(int purchaseAmount, int income){
+    String getIncomeRate(int purchaseAmount, int income) {
         double incomeRate = ((double) income / purchaseAmount) * 100;
-
         double roundedIncomeRate = Math.round(incomeRate * 100) / 100.0;
 
-        System.out.println("총 수익률은 " + roundedIncomeRate + "% 입니다.");
+        return "총 수익률은 " + roundedIncomeRate + "% 입니다.";
+    }
+
+    public void showIncomeRate(int purchaseAmount, int income) {
+        System.out.println(getIncomeRate(purchaseAmount, income));
     }
 
 }
