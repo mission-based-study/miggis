@@ -29,21 +29,28 @@ public class OutputView {
                 .mapToInt(entry -> entry.getKey().getPrize() * entry.getValue().intValue())
                 .sum();
 
-        for (Rank rank : Rank.values()) {
+        printOutputReverse(rankCountMap);
+
+        return income;
+    }
+
+    private void printOutputReverse(Map<Rank, Long> rankCountMap){
+        Rank[] ranks = Rank.values();
+        for (int i = ranks.length - 1; i >= 0; i--) {
+            Rank rank = ranks[i];
             if (rank == Rank.NOMATCH) continue;
 
             long count = rankCountMap.getOrDefault(rank, 0L);
-
-            System.out.println(rank + "" + count + "개");
+            System.out.println(rank + " " + count + "개");
         }
-
-        return income;
     }
 
     public void showIncomeRate(int purchaseAmount, int income){
         double incomeRate = ((double) income / purchaseAmount) * 100;
 
-        System.out.println("총 수익률은 " + incomeRate + "% 입니다.");
+        double roundedIncomeRate = Math.round(incomeRate * 100) / 100.0;
+
+        System.out.println("총 수익률은 " + roundedIncomeRate + "% 입니다.");
     }
 
 }
