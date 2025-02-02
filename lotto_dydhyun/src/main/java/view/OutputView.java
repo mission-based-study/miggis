@@ -33,6 +33,8 @@ public class OutputView {
 
         return income;
     }
+    // 해당 메서드는 outputList 에 담긴 값으로 수익을 계산하는 메서드 이므로,
+    // 출력을 담당하는 View 클래스 보다 Counting 클래스에서 책임지는게 더 적합할듯.
 
     private void printOutputReverse(Map<Rank, Long> rankCountMap){
         Rank[] ranks = Rank.values();
