@@ -7,13 +7,6 @@ import java.util.List;
 
 public class LottoGame {
 
-    List<Lotto> randomLottoList;
-
-    public LottoGame(int gameCount) {
-        this.randomLottoList = generateLotto(gameCount);
-
-    }
-
     public List<Lotto> generateLotto(int gameCount) {
         List<Lotto> generatedLotto = new ArrayList<>();
 

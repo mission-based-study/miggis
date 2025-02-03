@@ -22,7 +22,7 @@ public class LottoController {
         int gameCount = inputView.purchase();
         int purchaseAmount = gameCount * InputView.PURCHASE_SCALE;
 
-        LottoGame lottoGame = new LottoGame(gameCount);
+        LottoGame lottoGame = new LottoGame();
 
         List<Lotto> randomLottoList = lottoGame.generateLotto(gameCount);
 
@@ -31,7 +31,7 @@ public class LottoController {
         Lotto winningNumber = inputView.enterWinningNumber();
         int bonusNumber = noDuplicationInputBonusNumber(winningNumber);
 
-        Counting counting = new Counting(lottoGame.generateLotto(gameCount), winningNumber, bonusNumber);
+        Counting counting = new Counting(randomLottoList, winningNumber, bonusNumber);
 
         int income = outputView.showTotalCount(counting.outputList);
 
