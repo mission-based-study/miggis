@@ -7,14 +7,14 @@ import java.util.List;
 
 public class LottoGame {
 
-    public List<Lotto> randomLottoList;
+    List<Lotto> randomLottoList;
 
     public LottoGame(int gameCount) {
         this.randomLottoList = generateLotto(gameCount);
 
     }
 
-    private List<Lotto> generateLotto(int gameCount) {
+    public List<Lotto> generateLotto(int gameCount) {
         List<Lotto> generatedLotto = new ArrayList<>();
 
         for (int i = 0; i < gameCount; i++) {
@@ -29,11 +29,12 @@ public class LottoGame {
                 .stream().sorted().toList();
     }
 
-    public boolean isDuplicateBonusNumberCompareToWinningNumber(Lotto winningNumber, int bonusNumber) {
+    // lottoGame 객체와 독립적인 기능이라 생각해 정적 메서드로 변경함.
+    public static boolean isDuplicateBonusNumberCompareToWinningNumber(Lotto winningNumber, int bonusNumber) {
         return winningNumber.isDuplicateNumber(bonusNumber);
     }
 
-    public boolean checkBonusNumberInRange(int bonusNumber) {
+    public static boolean checkBonusNumberInRange(int bonusNumber) {
         try {
             Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
 
