@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import lotto.Counting;
 import lotto.Lotto;
