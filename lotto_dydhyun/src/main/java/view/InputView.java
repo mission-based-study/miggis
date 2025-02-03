@@ -11,12 +11,10 @@ public class InputView {
     private static final String ENTER_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
     public static final int PURCHASE_SCALE = 1000;
 
-    public int gameCount = 0;
+    private int gameCount = 0;
 
-    public InputView() {
-        purchase();
+    public InputView(){
 
-        System.out.println(gameCount + "개를 구매했습니다.");
     }
 
     InputView(String userInput) {
@@ -34,7 +32,7 @@ public class InputView {
         this.gameCount = purchaseAmount / PURCHASE_SCALE;
     }
 
-    private void purchase(){
+    public int purchase(){
         System.out.println(ENTER_PURCHASE_AMOUNT);
 
         String userInput = Console.readLine();
@@ -44,7 +42,11 @@ public class InputView {
         validateInputPositiveNumber(purchaseAmount);
         validateInputScale(purchaseAmount);
 
-        this.gameCount = purchaseAmount / PURCHASE_SCALE;
+        int gameCount = purchaseAmount / PURCHASE_SCALE;
+
+        System.out.println(gameCount + "개를 구매했습니다.");
+
+        return gameCount;
     }
 
     private int validateInputType(String userInput){
@@ -80,18 +82,23 @@ public class InputView {
     }
 
     private List<Integer> parseInputToList(String rawInput){
-        List<Integer> winningNumber = new ArrayList<>();
-
-        String[] splitInput = rawInput.split(",");
-
-
-        for (String userInputNumber : splitInput) {
-            validateInputType(userInputNumber);
-
-            winningNumber.add(Integer.parseInt(userInputNumber.trim()));
-        }
-
-        return winningNumber.stream().sorted().toList();
+//        List<Integer> winningNumber = new ArrayList<>();
+//
+//        String[] splitInput = rawInput.split(",");
+//
+//
+//        for (String userInputNumber : splitInput) {
+//            validateInputType(userInputNumber);
+//
+//            winningNumber.add(Integer.parseInt(userInputNumber.trim()));
+//        }
+//
+//        return winningNumber.stream().sorted().toList();
+        return Arrays.stream(rawInput.split(","))
+                .map(String::trim)
+                .map(this::validateInputType)
+                .sorted()
+                .toList();
     }
 
     public int enterBonusNumber(){

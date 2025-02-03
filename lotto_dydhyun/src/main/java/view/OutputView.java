@@ -9,11 +9,15 @@ import java.util.stream.Collectors;
 
 public class OutputView {
 
-    public OutputView(List<Lotto> randomLottoList) {
+    public OutputView(){
+
+    }
+
+    OutputView(List<Lotto> randomLottoList) {
         showGeneratedRandomLotto(randomLottoList);
     }
 
-    private void showGeneratedRandomLotto(List<Lotto> randomLottoList){
+    public void showGeneratedRandomLotto(List<Lotto> randomLottoList){
         for (Lotto lotto : randomLottoList) {
             System.out.println(lotto);
         }
@@ -49,9 +53,8 @@ public class OutputView {
 
     String getIncomeRate(int purchaseAmount, int income) {
         double incomeRate = ((double) income / purchaseAmount) * 100;
-        double roundedIncomeRate = Math.round(incomeRate * 100) / 100.0;
 
-        return "총 수익률은 " + roundedIncomeRate + "% 입니다.";
+        return String.format("총 수익률은 %.2f%% 입니다.",incomeRate);
     }
 
     public void showIncomeRate(int purchaseAmount, int income) {
