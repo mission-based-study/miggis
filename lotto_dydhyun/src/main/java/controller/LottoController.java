@@ -19,7 +19,7 @@ public class LottoController {
 
     public void runLottoGame(){
 
-        int gameCount = inputView.purchase();
+        int gameCount = inputPurchaseAmount();
         int purchaseAmount = gameCount * InputView.PURCHASE_SCALE;
 
         LottoGame lottoGame = new LottoGame();
@@ -28,7 +28,7 @@ public class LottoController {
 
         outputView.showGeneratedRandomLotto(randomLottoList);
 
-        Lotto winningNumber = inputView.enterWinningNumber();
+        Lotto winningNumber = inputWinningNumber();
         int bonusNumber = noDuplicationInputBonusNumber(winningNumber);
 
         Counting counting = new Counting(randomLottoList, winningNumber, bonusNumber);
@@ -39,21 +39,46 @@ public class LottoController {
 
     }
 
-    private int noDuplicationInputBonusNumber(Lotto winningNumber) {
+    private int inputPurchaseAmount() {
         while (true) {
-            int bonusNumber = inputView.enterBonusNumber();
-
-            if (!LottoGame.checkBonusNumberInRange(bonusNumber)) {
-                System.out.println("[ERROR] 보너스 번호는 로또 범위에 있어야 합니다. 다시 입력하세요.");
-                continue;
+            try {
+                return inputView.purchase();
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] 잘못된 입력입니다. 입력은 " + InputView.PURCHASE_SCALE + "원 단위의 숫자만 허용합니다.");
+                System.out.println(e.getMessage());
             }
-
-            if (!LottoGame.isDuplicateBonusNumberCompareToWinningNumber(winningNumber, bonusNumber)) {
-                return bonusNumber;
-            }
-            System.out.println("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다. 다시 입력하세요.");
         }
     }
 
+    private Lotto inputWinningNumber() {
+        while (true) {
+            try {
+                return inputView.enterWinningNumber();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private int noDuplicationInputBonusNumber(Lotto winningNumber) {
+        while (true) {
+            try {
+
+                int bonusNumber = inputView.enterBonusNumber();
+
+                if (!LottoGame.checkBonusNumberInRange(bonusNumber)) {
+                    System.out.println("[ERROR] 보너스 번호는 로또 범위에 있어야 합니다. 다시 입력하세요.");
+                    continue;
+                }
+
+                if (!LottoGame.isDuplicateBonusNumberCompareToWinningNumber(winningNumber, bonusNumber)) {
+                    return bonusNumber;
+                }
+                System.out.println("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다. 다시 입력하세요.");
+            } catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 
 }
