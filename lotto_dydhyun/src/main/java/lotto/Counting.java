@@ -9,8 +9,8 @@ public class Counting {
 
     public Counting(List<Lotto> randomLottoList, Lotto winningNumber, int bonusNumber) {
 
-        for (int list = 0; list < randomLottoList.size(); list++){
-            Rank rank = compareLotto(randomLottoList.get(list), winningNumber, bonusNumber);
+        for (Lotto lotto : randomLottoList) {
+            Rank rank = compareLotto(lotto, winningNumber, bonusNumber);
             outputList.add(rank);
         }
 
